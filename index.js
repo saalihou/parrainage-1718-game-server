@@ -3,10 +3,10 @@ var express = require('express');
 
 var app = express();
 var server = app.listen(8081, function() {
-  console.log("server launched");
+  console.log('server launched');
 });
 
-var req = socket(server);
+var io = socket(server);
 
 let fathers = [];
 let sons = [];
@@ -54,22 +54,35 @@ const gameState = {
     ]
   },
   currentCriterion: 2,
-  distributedCriterions: [[0, 1], [2]]
+  distributedCriterions: [[0, 1], [2]],
+  result: [0, 1]
 };
 
 //Connection from a client
-req.on('connection', function(socket) {
+io.on('connection', function(socket) {
   console.log(`New client connected with id ${socket.id}`);
 
-  //Requests
-    //Send answer to game and display clients
-  socket.on('answer', function(givenAnswer, ) {
-    //check who got the right answer
-    //update gameState
-    req.sockets.emit('gameState', gameState);
+  socket.on('reinitialize', function() {
+    // get 2 fathers and sons
+    // update game state
+    io.sockets.emit('gameState', gameState);
   });
 
-    //Send result to display client
+  socket.on('updateQuestion', function() {
+    // get a random question
+    // update game state
+    io.sockets.emit('gameState', gameState);
+  });
+
+  //Requests
+  //Send answer to game and display clients
+  socket.on('answer', function(givenAnswer) {
+    //check who got the right answer
+    //update gameState
+    io.sockets.emit('gameState', gameState);
+  });
+
+  //Send result to display client
   socket.on('gameOver', function() {
     //send response to display client with id
   });
