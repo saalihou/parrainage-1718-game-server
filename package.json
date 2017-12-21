@@ -4,5 +4,16 @@
   "description": "Serveur de jeu du parrainage de l'ESP (2017-2018)",
   "main": "index.js",
   "author": "Saalihou Ndiaye <saalihou@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/saalihou/parrainage-1718-game-server.git"
+  },
+  "bugs": {
+    "url": "https://github.com/saalihou/parrainage-1718-game-server/issues"
+  },
+  "homepage": "https://github.com/saalihou/parrainage-1718-game-server#readme"
 }
