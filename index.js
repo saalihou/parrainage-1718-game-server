@@ -62,4 +62,7 @@ req.on('connection', function(socket) {
   console.log(`New client connected with id ${socket.id}`);
 
   //Requests
-})
+  socket.on('answer', function(givenAnswer, ) {
+    //to do
+  });
+});
