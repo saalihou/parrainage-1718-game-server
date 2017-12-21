@@ -1,5 +1,3 @@
-
-
 function updateGame(state) {
 	if (state.selectedFathers.length == 0) {
 		reinitialize();

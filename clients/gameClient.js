@@ -1,15 +1,25 @@
-var socket = require('socket.io');
-var express = require('express');
+function updateGame(state) {
+	if (state.selectedFathers.length !== 0 && state.currentQuestion == null) {
+		initGame(state);
+	} else if (state.selectedFathers.length !== 0 && state.currentQuestion !== null) {
+		initGame(state);
+		displayQuestion(state);
+	}
+}
 
-var app = express();
-var server = app.listen(8081, function() {
-  console.log("server launched");
-});
+function initGame(state) {
+	displaySon(state.selectedSons[state.clientIndex]);
+}
 
-var req = socket(server);
+function displaySon(son) {
+	alert("Informations relatives aux filleus " + JSON.stringify(son));
+}
 
-let fathers = [];
-let sons = [];
+
+function displayQuestion(state) {
+	alert("La question est : " + JSON.stringify(state.currentQuestion));
+	alert("Le critère pour lequel vous compétissez est : " + state.selectedCriteria[state.currentCriterion]);
+}
 
 const gameState = {
   selectedFathers: [
@@ -30,7 +40,8 @@ const gameState = {
     {
       id: 1,
       photo: 'http://placehold.it/400x400',
-      name: 'Cherif'
+      name: 'Cherif',
+      winner: true
     },
     {
       id: 2,
@@ -57,25 +68,10 @@ const gameState = {
       }
     ]
   },
-  currentCriterion: 3,
-  distributedCriterions: [[0, 1], [2, 3]],
+  currentCriterion: null,
+  distributedCriteria: [[], []],
+  result: [0, 1],
   clientIndex: 0
 };
 
-//Connection from a client
-req.on('connection', function(socket) {
-  console.log(`New client connected with id ${socket.id}`);
-
-  //Requests
-    //Send answer to game and display clients
-  socket.on('answer', function(givenAnswer, ) {
-    //check who got the right answer
-    //update gameState
-    req.sockets.emit('gameState', gameState);
-  });
-
-    //Send result to display client
-  socket.on('gameOver', function() {
-    //send response to display client with id
-  });
-});
+updateGame(gameState);
