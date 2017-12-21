@@ -62,7 +62,15 @@ req.on('connection', function(socket) {
   console.log(`New client connected with id ${socket.id}`);
 
   //Requests
+    //Send answer to game and display clients
   socket.on('answer', function(givenAnswer, ) {
-    //to do
+    //check who got the right answer
+    //update gameState
+    req.sockets.emit('gameState', gameState);
+  });
+
+    //Send result to display client
+  socket.on('gameOver', function() {
+    //send response to display client with id
   });
 });
