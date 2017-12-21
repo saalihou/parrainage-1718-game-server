@@ -1,3 +1,13 @@
+var socket = require('socket.io');
+var express = require('express');
+
+var app = express();
+var server = app.listen(8081, function() {
+  console.log("server launched");
+});
+
+var req = socket(server);
+
 let fathers = [];
 let sons = [];
 
@@ -46,3 +56,10 @@ const gameState = {
   currentCriterion: 2,
   distributedCriterions: [[0, 1], [2]]
 };
+
+//Connection from a client
+req.on('connection', function(socket) {
+  console.log(`New client connected with id ${socket.id}`);
+
+  //Requests
+})
