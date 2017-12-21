@@ -1,3 +1,9 @@
+var socket = io('http://localhost:8081');
+
+function answer(index) {
+	socket.emit('answer',index);
+}
+
 function updateGame(state) {
 	if (state.selectedFathers.length !== 0 && state.currentQuestion == null) {
 		initGame(state);

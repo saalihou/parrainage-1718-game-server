@@ -70,12 +70,14 @@ io.on('connection', function(socket) {
     // get 2 fathers and sons
     // update game state
     io.sockets.emit('gameState', gameState);
+    console.log('reinitialize');
   });
 
-  socket.on('updateQuestion', function() {
+  socket.on('nextQuestion', function() {
     // get a random question
     // update game state
     io.sockets.emit('gameState', gameState);
+    console.log('nextQuestion');
   });
 
   //Requests
@@ -83,6 +85,7 @@ io.on('connection', function(socket) {
   socket.on('answer', function(givenAnswer) {
     //check who got the right answer
     //update gameState
+    console.log(givenAnswer);
     io.sockets.emit('gameState', gameState);
   });
 
