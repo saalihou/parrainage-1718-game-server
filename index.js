@@ -62,6 +62,15 @@ const gameState = {
   result: [0, 1]
 };
 
+getCorrectAnswer() => {
+  var goodAnswer;
+  gameState.currentQuestion.answers.forEach((answer) => {
+    if(answer.good)
+      goodAnswer = answer;
+  });
+  return goodAnswer;
+}
+
 //Connection from a client
 io.on('connection', function(socket) {
   console.log(`New client connected with id ${socket.id}`);
@@ -84,7 +93,8 @@ io.on('connection', function(socket) {
   //Send answer to game and display clients
   socket.on('answer', function(givenAnswer) {
     //check who got the right answer
-    //update gameState
+    if(givenAnswer === getCorrectAnswer())     
+      //update gameState
     console.log(givenAnswer);
     io.sockets.emit('gameState', gameState);
   });
