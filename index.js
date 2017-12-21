@@ -63,12 +63,9 @@ const gameState = {
 };
 
 getCorrectAnswer() => {
-  var goodAnswer;
-  gameState.currentQuestion.answers.forEach((answer) => {
-    if(answer.good)
-      goodAnswer = answer;
+  return gameState.currentQuestion.answers.find((elem) => {
+    return elem.good;
   });
-  return goodAnswer;
 }
 
 //Connection from a client
