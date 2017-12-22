@@ -15,5 +15,12 @@
   "bugs": {
     "url": "https://github.com/saalihou/parrainage-1718-game-server/issues"
   },
-  "homepage": "https://github.com/saalihou/parrainage-1718-game-server#readme"
+  "homepage": "https://github.com/saalihou/parrainage-1718-game-server#readme",
+  "dependencies": {
+    "bluebird": "^3.5.1",
+    "express": "^4.16.2",
+    "lodash": "^4.17.4",
+    "mongoose": "^4.13.7",
+    "socket.io": "^2.0.4"
+  }
 }
