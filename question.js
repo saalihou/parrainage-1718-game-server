@@ -2,17 +2,17 @@ var questions = [
     {
         "question" : "Le nombre qui suit le nombre 4 en base 5 est",
         "choix" : [10,5,0],
-        "bonne_reponse" : 0
+        "bonne_reponse" : "0"
     },
     {
         "question" : "Combien y'a t-il d'octets dans un ko (kilo-octet) ?",
         "choix" : [1000,1024,1048],
-        "bonne_reponse" : 0
+        "bonne_reponse" : "0"
     },
     {
         "question" : "Un clavier français est un clavier ?",
         "choix" : ["AZERTY","QWERTY","Type 12"],
-        "bonne_reponse" : 0
+        "bonne_reponse" : "0"
     },
     {
         "question" : "Sous Windows XP, la configuration est enregistré dans ?",
@@ -136,7 +136,7 @@ var questions = [
     },
     {
         "question" : "Qu'est-ce qu'un upgrade ?",
-        "choix" : ["une mis a jour","Le chargement d'un fichier informatique vers un ordinateur","Un systeme d'exploitation"],
+        "choix" : ["une mise a jour","Le chargement d'un fichier informatique vers un ordinateur","Un systeme d'exploitation"],
         "bonne_reponse" : 0
     },
     {
@@ -380,19 +380,243 @@ var questions = [
         "bonne_reponse" : 1
     },
     {
-        "question" : "Tout le monde connait aujourd'hui Internet, quelle en est l'origine ?",
-        "choix" : ["Arpinet","Arpanet","World wide web"],
+        "question" : "Quelle est la phrase preferee de Mme Diene?",
+        "choix" : ["On y va","Nous y allons","On y vont"],
+        "bonne_reponse" : 2
+    },
+    {
+        "question" : "Qui est le createur de facebook?",
+        "choix" : ["Mark Zuckerberg","Mark Willmots","Marc Antoine"],
+        "bonne_reponse" : 0
+    },
+    {
+        "question" : "Y'a t'il une difference entre Java et Javascript",
+        "choix" : ["Non","Oui","Parfois"],
         "bonne_reponse" : 1
     },
     {
-        "question" : "Le binaire ne comporte que des ...",
-        "choix" : ["1 et 2","0 et 1"," 0 et 2"],
+        "question" : "Que signifie CSS?",
+        "choix" : ["Cascading Style Show","Cascade Show System","Cascading Style Sheet"],
+        "bonne_reponse" : 2
+    },
+    {
+        "question" : "Qu'est ce qu'un white hat?",
+        "choix" : ["Un bon hackeur","Un mauvais hackeur","Je ne sais pas"],
+        "bonne_reponse" : 0
+    },
+    {
+        "question" : "Que signifie PHP?",
+        "choix" : ["PHP Hypertext Preprocessor","PHP Hyphen Preprocessor","PHP Hydrocarbure Preprocessor"],
+        "bonne_reponse" : 0
+    },
+    {
+        "question" : "Qui est le fondateur de la W3C?",
+        "choix" : ["Tim Wayne","Tim Bernes Lee","Bruce Lee"],
         "bonne_reponse" : 1
     },
     {
-        "question" : "Qui sont les fondateurs de Google ?",
-        "choix" : ["Jobs et Wozniak","Page et Brin","Gates et Allen"],
+        "question" : "Que signifie AFNOR?",
+        "choix" : ["Association Finlandaise de Normalisation","Association Francaise de Normalisation","Association des Femmes Normalisatrices"],
+        "bonne_reponse" : 1
+    },
+    {
+        "question" : "La norme 802.3 definit: ",
+        "choix" : ["Ethernet","Internet","Intranet"],
+        "bonne_reponse" : 0
+    },
+    {
+        "question" : "Que signifie la commande rmdir?",
+        "choix" : ["Remove direction","Remove directory","Remove file"],
+        "bonne_reponse" : 1
+    },
+    {
+        "question" : "Que signifie la commande mkdir?",
+        "choix" : ["Make file","Make direction","Make directory"],
+        "bonne_reponse" : 2
+    },
+    {
+        "question" : "Que signifie la commande cd?",
+        "choix" : ["Change direction","Change directory","Change directive"],
+        "bonne_reponse" : 1
+    },
+    {
+        "question" : "Que signifie la commande pwd?",
+        "choix" : ["Print wireless directory","Print wifi directory","Print working directory"],
+        "bonne_reponse" : 2
+    },
+    {
+        "question" : "L'equivalent de ls en DOS est:",
+        "choix" : ["dar","der","dir"],
+        "bonne_reponse" : 2
+    },
+    {
+        "question" : "Que signifie TLD?",
+        "choix" : ["Top Level Direction","Top Level Domain","Top Level Directive"],
+        "bonne_reponse" : 1
+    },
+    {
+        "question" : "Que signifie WYSIWYG?",
+        "choix" : ["What You See Is What You Get","What You See Is What You Give","What You Say Is What You Get"],
+        "bonne_reponse" : 0
+    },
+    {
+        "question" : "Quel animal represente la mascotte de Linux?",
+        "choix" : ["Lapin","Mouton","Pingouin"],
+        "bonne_reponse" : 2 
+    },
+    {
+        "question" : "Quel animal represente la mascotte de PHP",
+        "choix" : ["Mouton","Elephant","Dinosaure"],
+        "bonne_reponse" : 1
+    },
+    {
+        "question" : "Comment s'appelle le cote obscure du web?",
+        "choix" : ["Nightmare","Darkweb","ShadowWeb"],
+        "bonne_reponse" : 1
+    },
+    {
+        "question" : "Que signifie BASH?",
+        "choix" : ["Bring Alone SHELL","Bourne Alone SHELL","Bourne Again SHELL"],
+        "bonne_reponse" : 1
+    },
+    {
+        "question" : "Que signifie Kshell?",
+        "choix" : ["Klayton SHELL","Korn SHELL","Kevin SHELL"],
+        "bonne_reponse" : 1
+    },
+    {
+        "question" : "Qui est considere comme 'The Keyboar Lord?'",
+        "choix" : ["Jean Phillipe Fall","Oumar Sy","Abdoul Kande"],
+        "bonne_reponse" : 1
+    },
+    {
+        "question" : "Que signifie FIFO?",
+        "choix" : ["First In First Out","First Individual First Out","First Element First Out"],
+        "bonne_reponse" : 0
+    },
+    {
+        "question" : "Informaticien a plein temps et basketteur a plein temps, qui suis je?",
+        "choix" : ["Mame Seyni","Mame Papi","Mame Fashion"],
+        "bonne_reponse" : 1
+    },
+    {
+        "question" : "Quelle application mobile fait le buzz en ce moment?",
+        "choix" : ["Facebook","Senebus","Sunubus"],
+        "bonne_reponse" : 2
+    },
+    {
+        "question" : "J'ai installe des OS sur plus de 10 machines depuis le debut de l'annee, qui suis je?",
+        "choix" : ["Parrain Moustapha Kebe","Parrain Boubacar Sock Niang","Parrain Kande"],
+        "bonne_reponse" : 1
+    },
+    {
+        "question" : "Je suis considere comme l'informaticien qui utilise le plus souvent le mot 'ndombo', qui suis je?",
+        "choix" : ["Mame Aidara","Parrain Max Fresh","Mame Seyni"],
+        "bonne_reponse" : 1
+    },
+    {
+        "question" : "Que signifie LIFO?",
+        "choix" : ["Later In First Out","Last In Finally Out","Last In First Out"],
+        "bonne_reponse" : 2
+    },
+    {
+        "question" : "Combien y a t-il de serveurs racines?",
+        "choix" : ["1","15","20"],
+        "bonne_reponse" : 2 
+    },
+    {
+        "question" : "Qui etait Kevin Mitnick?",
+        "choix" : ["Un electronicien","Un hacker","Un marchand"],
+        "bonne_reponse" : 1
+    },
+    {
+        "question" : "Quel legume represente le logo de TOR?",
+        "choix" : ["Oignon","Aubergine","Chou"],
+        "bonne_reponse" : 0
+    },
+    {
+        "question" : "A quoi sert le logiciel Winrar?",
+        "choix" : ["Dessiner","Compresser ou decompresser","Lire des videos"],
+        "bonne_reponse" : 1
+    },
+    {
+        "question" : "D'ou vient le mot algorithme?",
+        "choix" : ["Al Kwarithmi","Al Jabbria","Al Algoria"],
+        "bonne_reponse" : 0
+    },
+    {
+        "question" : "Qui a concu le C#?",
+        "choix" : ["Anders Hilton","Anders Hejlsberg","Ander Herrera"],
+        "bonne_reponse" : 1
+    },
+    {
+        "question" : "Qui a concu le langage PHP?",
+        "choix" : ["Rasmus Leer","Rasmus Leroy","Rasmus Lerdorf"],
+        "bonne_reponse" : 2
+    },
+    {
+        "question" : "Qui a concu le langage Python?",
+        "choix" : ["Guido Van Rossum","Guido Van Gaal","Denis Ritchie"],
+        "bonne_reponse" : 0
+    },
+    {
+        "question" : "Qui a concu le langage Java?",
+        "choix" : ["Guido Van Rossum","James Gosling","James Brown"],
+        "bonne_reponse" : 1
+    },
+    {
+        "question" : "Qui est la conceptrice du premier compilateur",
+        "choix" : ["Grace Murray Hopper","Jean Dubois","James Wayne"],
+        "bonne_reponse" : 0
+    },
+    {
+        "question" : "Qui a concu le langage Ruby?",
+        "choix" : ["Denis Ritchie","Guido Van Rossum","Yukihiro Matsumoto"],
+        "bonne_reponse" : 2
+    },
+    {
+        "question" : "A quoi sert le logiciel VLC?",
+        "choix" : ["Lire des fichiers pdf","Editer des fichiers","Lire des medias"],
+        "bonne_reponse" : 2
+    },
+    {
+        "question" : "Identifier l'intrus",
+        "choix" : ["Avira Security","Avast Security","Microsoft Word Security"],
+        "bonne_reponse" : 2
+    },
+    {
+        "question" : "Identifier l'intrus",
+        "choix" : ["CSS","HTML","JAVA"],
+        "bonne_reponse" : 2
+    },
+    {
+        "question" : "Identifier l'intrus",
+        "choix" : ["Winrar","Wordpress","Joomla"],
+        "bonne_reponse" : 0
+    },
+    {
+        "question" : "Identifier l'intrus",
+        "choix" : ["HP","LENOVO","BMW"],
+        "bonne_reponse" : 2
+    },
+    {
+        "question" : "Identifier l'intrus",
+        "choix" : ["Sublime Text","Atom","Microsoft Powerpoint"],
+        "bonne_reponse" : 2
+    },
+    {
+        "question" : "Identifier l'intrus",
+        "choix" : ["NodeJS","PHP","Boostrap"],
+        "bonne_reponse" : 2
+    },
+    {
+        "question" : "Que signifie POO?",
+        "choix" : ["Programme Oriente Objet","Programmation Orientee Objet","Programmation Objet Oriente"],
+        "bonne_reponse" : 1
+    },
+    {
+        "question" : "Que signifie JSON",
+        "choix" : ["Javascript Son Of Network","Javascript Object Notation","Java Object Notation"],
         "bonne_reponse" : 1
     }
-
 ]
