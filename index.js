@@ -1,9 +1,16 @@
 var socket = require('socket.io');
 var express = require('express');
+const _ = require('lodash');
+
+const reinit = require('./src/reinit');
+const selectFathers = require('./src/selectFathers');
+const selectSons = require('./src/selectSons');
+const selectQuestion = require('./src/selectQuestion');
 
 var app = express();
 var server = app.listen(8081, function() {
   console.log('server launched');
+  reinit();
 });
 
 var io = socket(server);
@@ -11,93 +18,118 @@ var io = socket(server);
 let fathers = [];
 let sons = [];
 
-const gameState = {
-  selectedFathers: [
-    {
-      id: 1,
-      name: 'Papi',
-      photo: 'http://placehold.it/400x400',
-      criteria: ['papi1', 'papi2', 'papi3', 'papi4', 'papi5']
-    },
-    {
-      id: 2,
-      name: 'Aliou',
-      photo: 'http://placehold.it/400x400',
-      criteria: ['aliou1', 'aliou2', 'aliou3', 'aliou4', 'aliou5']
-    }
-  ],
-  selectedSons: [
-    {
-      id: 1,
-      photo: 'http://placehold.it/400x400',
-      name: 'Cherif'
-    },
-    {
-      id: 2,
-      photo: 'http://placehold.it/400x400',
-      name: 'Jeylani'
-    }
-  ],
-  selectedCriteria: ['papi1', 'aliou2', 'papi3', 'aliou1', 'papi2', 'aliou5'],
-  currentQuestion: {
-    label: 'Quelle est la date de naissance de Hitler ?',
-    answers: [
-      {
-        value: '1920',
-        good: true
-      },
-      {
-        value: '1925'
-      },
-      {
-        value: '1945'
-      },
-      {
-        value: '2019'
-      }
-    ]
-  },
-  currentCriterion: 2,
-  distributedCriterions: [[0, 1], [2]],
-  result: [0, 1]
-};
-
-getCorrectAnswer() => {
-  return gameState.currentQuestion.answers.find((elem) => {
-    return elem.good;
-  });
+function reinitialize() {
+  return {
+    selectedFathers: [],
+    selectedSons: [],
+    selectedCriteria: [],
+    currentQuestion: null,
+    currentCriterion: null,
+    distributedCriteria: [[], []]
+  };
 }
 
-//Connection from a client
+let gameState = reinitialize();
+
+const getCorrectAnswer = () => {
+  return gameState.currentQuestion.answers.find(elem => {
+    return elem.good;
+  });
+};
+
+let clientCount = 0;
+let wrongAnswerCount = 0;
+
 io.on('connection', function(socket) {
   console.log(`New client connected with id ${socket.id}`);
 
+  let clientIndex = null;
+
   socket.on('reinitialize', function() {
-    // get 2 fathers and sons
-    // update game state
-    io.sockets.emit('gameState', gameState);
-    console.log('reinitialize');
-  });
-
-  socket.on('nextQuestion', function() {
-    // get a random question
-    // update game state
-    io.sockets.emit('gameState', gameState);
-    console.log('nextQuestion');
-  });
-
-  //Requests
-  //Send answer to game and display clients
-  socket.on('answer', function(givenAnswer) {
-    //check who got the right answer
-    if(givenAnswer === getCorrectAnswer())     
-      //update gameState
-    console.log(givenAnswer);
+    gameState = reinitialize();
     io.sockets.emit('gameState', gameState);
   });
 
-  //Send result to display client
-  socket.on('gameOver', function() {
-    //send response to display client with id
+  socket.on('gameClient', function() {
+    socket.emit('clientIndex', clientCount);
+    clientIndex = clientCount;
+    clientCount++;
+  });
+
+  socket.on('initGame', async function() {
+    gameState.selectedSons = await selectSons();
+    gameState.selectedFathers = await selectFathers();
+    const father1Criteria = _.sampleSize(
+      gameState.selectedFathers[0].criteria,
+      3
+    );
+    const father2Criteria = _.sampleSize(
+      gameState.selectedFathers[1].criteria,
+      3
+    );
+    gameState.selectedCriteria = father1Criteria.concat(father2Criteria);
+    io.sockets.emit('gameState', gameState);
+  });
+
+  socket.on('nextQuestion', async function() {
+    wrongAnswerCount = 0;
+    const question = await selectQuestion();
+    gameState.currentQuestion = question;
+    do {
+      gameState.currentCriterion = _.random(
+        0,
+        gameState.selectedCriteria.length - 1
+      );
+    } while (_.flatten(gameState.distributedCriteria).includes(gameState.currentCriterion));
+    io.sockets.emit('gameState', gameState);
+  });
+
+  function checkWinner() {
+    const distributedCriteria = gameState.distributedCriteria;
+    if (_.flatten(distributedCriteria).length === 6) {
+      const winnerIndex =
+        distributedCriteria[0].length > distributedCriteria[1].length ? 0 : 1;
+      const wonCriteria = distributedCriteria[winnerIndex];
+      const firstFatherCount = wonCriteria.filter(index => index <= 2).length;
+      const secondFatherCount = wonCriteria.filter(index => index > 2).length;
+      const wonFatherIndex = firstFatherCount > secondFatherCount ? 0 : 1;
+      gameState.result = [];
+      gameState.result[winnerIndex] = wonFatherIndex;
+      gameState.result[winnerIndex === 0 ? 1 : 0] =
+        wonFatherIndex === 0 ? 1 : 0;
+    }
+  }
+
+  function chooseRandomWinner() {
+    const winnerIndex = _.random(0, 1);
+    gameState.distributedCriteria[winnerIndex].push(gameState.currentCriterion);
+    checkWinner();
+  }
+
+  socket.on('answer', function(index) {
+    const distributedCriteria = gameState.distributedCriteria;
+    if (gameState.currentQuestion.answers[index].good) {
+      gameState.distributedCriteria[clientIndex].push(
+        gameState.currentCriterion
+      );
+      checkWinner();
+      io.sockets.emit('gameState', gameState);
+      io.sockets.emit('endRound', clientIndex);
+    } else {
+      wrongAnswerCount++;
+      console.log(wrongAnswerCount);
+      if (wrongAnswerCount == 2) {
+        chooseRandomWinner();
+        io.sockets.emit('gameState', gameState);
+        io.sockets.emit('endRound');
+      }
+      socket.emit('wrongAnswer');
+    }
+  });
+
+  socket.on('timeout', function() {
+    chooseRandomWinner();
+    io.sockets.emit('gameState', gameState);
+    io.sockets.emit('endRound');
   });
 });
