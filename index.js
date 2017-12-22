@@ -25,7 +25,8 @@ function reinitialize() {
     selectedCriteria: [],
     currentQuestion: null,
     currentCriterion: null,
-    distributedCriteria: [[], []]
+    distributedCriteria: [[], []],
+    state: 'INIT'
   };
 }
 
@@ -45,18 +46,21 @@ io.on('connection', function(socket) {
 
   let clientIndex = null;
 
-  socket.on('reinitialize', function() {
-    gameState = reinitialize();
-    io.sockets.emit('gameState', gameState);
-  });
+  socket.emit('gameState', gameState);
 
   socket.on('gameClient', function() {
+    console.log('gameClient', clientCount);
     socket.emit('clientIndex', clientCount);
+    setTimeout(() => {
+      socket.emit('gameState', gameState);
+    });
     clientIndex = clientCount;
-    clientCount++;
+    clientCount = clientCount === 0 ? 1 : 0;
   });
 
   socket.on('initGame', async function() {
+    console.log('initGame');
+    gameState = reinitialize();
     gameState.selectedSons = await selectSons();
     gameState.selectedFathers = await selectFathers();
     const father1Criteria = _.sampleSize(
@@ -68,10 +72,15 @@ io.on('connection', function(socket) {
       3
     );
     gameState.selectedCriteria = father1Criteria.concat(father2Criteria);
+    gameState.state = 'INIT';
     io.sockets.emit('gameState', gameState);
   });
 
   socket.on('nextQuestion', async function() {
+    console.log(_.flatten(gameState.distributedCriteria).length)
+    if (_.flatten(gameState.distributedCriteria).length === 6) {
+      return;
+    }
     wrongAnswerCount = 0;
     const question = await selectQuestion();
     gameState.currentQuestion = question;
@@ -81,6 +90,7 @@ io.on('connection', function(socket) {
         gameState.selectedCriteria.length - 1
       );
     } while (_.flatten(gameState.distributedCriteria).includes(gameState.currentCriterion));
+    gameState.state = 'QUESTION';
     io.sockets.emit('gameState', gameState);
   });
 
@@ -107,18 +117,22 @@ io.on('connection', function(socket) {
   }
 
   socket.on('answer', function(index) {
+    console.log('answer');
     const distributedCriteria = gameState.distributedCriteria;
     if (gameState.currentQuestion.answers[index].good) {
       gameState.distributedCriteria[clientIndex].push(
         gameState.currentCriterion
       );
       checkWinner();
+      gameState.state = 'ROUND_END';
+      io.sockets.emit('goodAnswer');
       io.sockets.emit('gameState', gameState);
       io.sockets.emit('endRound', clientIndex);
     } else {
       wrongAnswerCount++;
       if (wrongAnswerCount == 2) {
         chooseRandomWinner();
+        gameState.state = 'ROUND_END';
         io.sockets.emit('gameState', gameState);
         io.sockets.emit('endRound');
       }
@@ -127,9 +141,11 @@ io.on('connection', function(socket) {
   });
 
   socket.on('timeout', function() {
-    console.log('timeout')
+    console.log('timeout');
     chooseRandomWinner();
+    gameState.state = 'ROUND_END';
     io.sockets.emit('gameState', gameState);
     io.sockets.emit('endRound');
+    io.sockets.emit('timeout');
   });
 });
