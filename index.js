@@ -117,7 +117,6 @@ io.on('connection', function(socket) {
       io.sockets.emit('endRound', clientIndex);
     } else {
       wrongAnswerCount++;
-      console.log(wrongAnswerCount);
       if (wrongAnswerCount == 2) {
         chooseRandomWinner();
         io.sockets.emit('gameState', gameState);
@@ -128,6 +127,7 @@ io.on('connection', function(socket) {
   });
 
   socket.on('timeout', function() {
+    console.log('timeout')
     chooseRandomWinner();
     io.sockets.emit('gameState', gameState);
     io.sockets.emit('endRound');

@@ -9,7 +9,12 @@ const Student = mongoose.model('Student', {
     enum: ['inf', 'tr']
   },
   photo: String,
-  criteria: [String]
+  criteria: [String],
+  father: mongoose.Schema.Types.ObjectId,
+  sonCount: {
+    type: Number,
+    default: 0
+  }
 });
 
 module.exports = Student;

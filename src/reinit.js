@@ -11,7 +11,7 @@ module.exports = async function reinit() {
       level: 2,
       option: 'inf',
       photo: 'http://placehold.it/400x400',
-      criteria: ['k1', 'k2', 'k3', 'k4', 'k5']
+      criteria: ['k1', 'k2', 'k3', 'k4', 'k5'],
     },
     {
       firstName: 'Cheikh',
@@ -19,7 +19,16 @@ module.exports = async function reinit() {
       level: 2,
       option: 'inf',
       photo: 'http://placehold.it/400x400',
-      criteria: ['c1', 'c2', 'c3', 'c4', 'c5']
+      criteria: ['c1', 'c2', 'c3', 'c4', 'c5'],
+      sonCount: 1
+    },
+    {
+      firstName: 'Aliou',
+      lastName: 'Sall',
+      level: 2,
+      option: 'inf',
+      photo: 'http://placehold.it/400x400',
+      criteria: ['a1', 'a2', 'a3', 'a4', 'a5']
     },
     {
       firstName: 'Mouhammad',
@@ -31,6 +40,14 @@ module.exports = async function reinit() {
     {
       firstName: 'Cheikh',
       lastName: 'Seck',
+      level: 1,
+      option: 'inf',
+      photo: 'http://placehold.it/400x400',
+      father: '507f191e810c19729de860ea'
+    },
+    {
+      firstName: 'Adama',
+      lastName: 'Wade',
       level: 1,
       option: 'inf',
       photo: 'http://placehold.it/400x400'
