@@ -2,6 +2,7 @@ var socket = require('socket.io');
 var express = require('express');
 const _ = require('lodash');
 const fs = require('fs');
+const cors = require('cors');
 
 const reinit = require('./src/reinit');
 const selectFathers = require('./src/selectFathers');
@@ -11,12 +12,15 @@ const sponsor = require('./src/sponsor');
 const getRemainingSons = require('./src/getRemainingSons');
 
 var app = express();
-var server = app.listen(8081, function() {
+app.use(cors());
+var server = app.listen(8081, '0.0.0.0', function() {
   console.log('server launched');
   // reinit();
 });
 
-var io = socket(server);
+var io = socket(server, {
+  origins: '*:*'
+});
 
 let fathers = [];
 let sons = [];

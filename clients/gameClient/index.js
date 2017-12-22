@@ -1,4 +1,4 @@
-var socket = io('http://localhost:8081');
+var socket = io('http://192.168.43.121:8081');
 
 function updateGame(gameState) {
   if (window.clientIndex === undefined) {
@@ -98,3 +98,5 @@ socket.on('goodAnswer', function() {
 socket.on('timeout', function() {
   disableAnswers();
 });
+
+socket.on('connect_error', e => alert(e));

@@ -2,6 +2,7 @@ const Student = require('../models/Student');
 const Question = require('../models/Question');
 
 const students = require('../dgi.json');
+const questions = require('../question.json');
 
 module.exports = async function reinit() {
   await Student.remove({});
@@ -16,6 +17,15 @@ module.exports = async function reinit() {
       level: s.niveau === 'dut1' ? 1 : 2,
       photo: s.img,
       criteria: [s.crt1, s.crt2, s.crt3, s.crt4, s.crt5]
+    }))
+  );
+  await Question.insertMany(
+    questions.map(s => ({
+      label: s.question,
+      answers: s.choix.map((c, index) => ({
+        value: c,
+        good: index === s.bonne_reponse
+      }))
     }))
   );
 
@@ -66,36 +76,36 @@ module.exports = async function reinit() {
   //     photo: 'http://placehold.it/400x400'
   //   }
   // ]);
-  await Question.insertMany([
-    {
-      label: 'Est-ce que vous êtes fatiguééé ?',
-      answers: [
-        {
-          value: 'NOOOOOOOOOOOOON',
-          good: true
-        },
-        {
-          value: 'OUIIIIIIIIIIII'
-        },
-        {
-          value: 'PEUTEEEEETRE'
-        }
-      ]
-    },
-    {
-      label: 'Est-ce que Seynou est idiooot ?',
-      answers: [
-        {
-          value: 'NOOOOOOOOOOOOON'
-        },
-        {
-          value: 'OUIIIIIIIIIIII',
-          good: true
-        },
-        {
-          value: 'PEUTEEEEETRE'
-        }
-      ]
-    }
-  ]);
+  // await Question.insertMany([
+  //   {
+  //     label: 'Est-ce que vous êtes fatiguééé ?',
+  //     answers: [
+  //       {
+  //         value: 'NOOOOOOOOOOOOON',
+  //         good: true
+  //       },
+  //       {
+  //         value: 'OUIIIIIIIIIIII'
+  //       },
+  //       {
+  //         value: 'PEUTEEEEETRE'
+  //       }
+  //     ]
+  //   },
+  //   {
+  //     label: 'Est-ce que Seynou est idiooot ?',
+  //     answers: [
+  //       {
+  //         value: 'NOOOOOOOOOOOOON'
+  //       },
+  //       {
+  //         value: 'OUIIIIIIIIIIII',
+  //         good: true
+  //       },
+  //       {
+  //         value: 'PEUTEEEEETRE'
+  //       }
+  //     ]
+  //   }
+  // ]);
 };
