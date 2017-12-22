@@ -7,11 +7,12 @@ const selectFathers = require('./src/selectFathers');
 const selectSons = require('./src/selectSons');
 const selectQuestion = require('./src/selectQuestion');
 const sponsor = require('./src/sponsor');
+const getRemainingSons = require('./src/getRemainingSons');
 
 var app = express();
 var server = app.listen(8081, function() {
   console.log('server launched');
-  reinit();
+  // reinit();
 });
 
 var io = socket(server);
@@ -67,6 +68,8 @@ io.on('connection', function(socket) {
     gameState = reinitialize();
     gameState.selectedSons = await selectSons();
     gameState.selectedFathers = await selectFathers();
+    gameState.remainingSons = await getRemainingSons();
+    console.log(gameState.remainingSons);
     const father1Criteria = _.sampleSize(
       gameState.selectedFathers[0].criteria,
       3
@@ -114,7 +117,6 @@ io.on('connection', function(socket) {
       saveSponsoring();
     }
   }
-
 
   async function saveSponsoring() {
     const pair1 = [

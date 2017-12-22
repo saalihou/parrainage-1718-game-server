@@ -34,6 +34,7 @@ function initGame(state) {
     state.distributedCriteria,
     state.currentCriterion
   );
+  $('#remaining').text(state.remainingSons + ' parrainage(s) restant(s)');
 }
 
 function displaySons(sons, distributedCriteria, selectedCriteria) {
