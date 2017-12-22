@@ -10,6 +10,7 @@ function initGame() {
 
 function nextQuestion() {
   socket.emit('nextQuestion');
+  clearTimeout(window.timeoutId);
   window.timeoutId = setTimeout(() => {
     socket.emit('timeout');
   }, 10000);
