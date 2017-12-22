@@ -6,6 +6,7 @@ const reinit = require('./src/reinit');
 const selectFathers = require('./src/selectFathers');
 const selectSons = require('./src/selectSons');
 const selectQuestion = require('./src/selectQuestion');
+const sponsor = require('./src/sponsor');
 
 var app = express();
 var server = app.listen(8081, function() {
@@ -110,7 +111,22 @@ io.on('connection', function(socket) {
       gameState.result[winnerIndex] = wonFatherIndex;
       gameState.result[winnerIndex === 0 ? 1 : 0] =
         wonFatherIndex === 0 ? 1 : 0;
+      saveSponsoring();
     }
+  }
+
+
+  async function saveSponsoring() {
+    const pair1 = [
+      gameState.selectedSons[0],
+      gameState.selectedFathers[gameState.result[0]]
+    ];
+    const pair2 = [
+      gameState.selectedSons[1],
+      gameState.selectedFathers[gameState.result[1]]
+    ];
+    await sponsor.apply(null, pair1);
+    await sponsor.apply(null, pair2);
   }
 
   function chooseRandomWinner() {
