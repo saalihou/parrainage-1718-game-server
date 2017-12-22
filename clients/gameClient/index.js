@@ -22,7 +22,9 @@ function reinitialize() {
 }
 
 function initGame(state) {
-  displaySon(state.selectedSons[window.clientIndex]);
+  if (state.selectedSons.length) {
+    displaySon(state.selectedSons[window.clientIndex]);
+  }
   $('.question-container, .answers-container').hide();
 }
 
@@ -82,6 +84,10 @@ function stopTimer() {
 }
 
 socket.emit('gameClient');
+socket.on('reconnect', function() {
+  socket.emit('gameClient');
+});
+
 socket.on('gameState', gameState => updateGame(gameState));
 socket.on('clientIndex', index => (window.clientIndex = index));
 socket.on('wrongAnswer', disableAnswers);
@@ -91,5 +97,4 @@ socket.on('goodAnswer', function() {
 });
 socket.on('timeout', function() {
   disableAnswers();
-  stopTimer();
 });

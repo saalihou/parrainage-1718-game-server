@@ -55,7 +55,10 @@ io.on('connection', function(socket) {
       socket.emit('gameState', gameState);
     });
     clientIndex = clientCount;
-    clientCount = clientCount === 0 ? 1 : 0;
+    clientCount++;
+    if (clientCount > 1) {
+      clientCount = 0;
+    }
   });
 
   socket.on('initGame', async function() {
@@ -77,10 +80,10 @@ io.on('connection', function(socket) {
   });
 
   socket.on('nextQuestion', async function() {
-    console.log(_.flatten(gameState.distributedCriteria).length)
     if (_.flatten(gameState.distributedCriteria).length === 6) {
       return;
     }
+    gameState.winner = null;
     wrongAnswerCount = 0;
     const question = await selectQuestion();
     gameState.currentQuestion = question;
@@ -120,11 +123,13 @@ io.on('connection', function(socket) {
     console.log('answer');
     const distributedCriteria = gameState.distributedCriteria;
     if (gameState.currentQuestion.answers[index].good) {
+      console.log(clientIndex, gameState.distributedCriteria);
       gameState.distributedCriteria[clientIndex].push(
         gameState.currentCriterion
       );
       checkWinner();
       gameState.state = 'ROUND_END';
+      gameState.winner = clientIndex;
       io.sockets.emit('goodAnswer');
       io.sockets.emit('gameState', gameState);
       io.sockets.emit('endRound', clientIndex);

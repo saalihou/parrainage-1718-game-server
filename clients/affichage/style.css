@@ -1,0 +1,174 @@
+html, body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.texte {
+  font-family: 'Dosis', sans-serif;
+}
+
+.titre {
+  font-size: 50px;
+  color: white;
+}
+h1 {
+  text-align: center;
+}
+
+h2 {
+  color: white;
+}
+.main-container {
+  display: flex;
+  height: 100%;
+  align-items: space-around;
+  flex-direction: row;
+  background-image: url("assets/images/photo-blured.jpg");
+  background-repeat: no-repeat; 
+  background-size: 100% 100%;
+}
+
+.player-container {
+  padding: 10px;
+  display: flex;
+  flex: 0.2;
+  flex-direction: column;
+  text-align: center;
+}
+
+.play-container {
+  flex: 0.6;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  height: 100%
+}
+
+.pic-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 23%;
+  width: 100%;
+}
+
+.pic {
+  margin: auto;
+  width: 55%;
+  height: 100%;
+  border-radius: 50%;
+  align-self: center;
+}
+.criteria-player-container {
+  height: 45%;
+}
+
+
+.question-container {
+  border-radius: 20px;
+  text-align: center;
+  height: 15%;
+  padding: 5px;
+  background-color: white;
+  box-shadow: 5px 5px 5px black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.answers-container {
+  height: 20%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+ul {
+  list-style-type: none;
+}
+
+li {
+  background-color: white;
+  border-radius: 10px;
+  margin-top: 10px;
+}
+
+.criterias-container {
+  height: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+button {
+  position: relative;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+.name1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 50px;
+  background-color: #4FC3F7;
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px black;
+  font-family: 'Dosis', sans-serif;
+}
+
+.name2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 50px;
+  background-color: #F44336;
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px black;
+  font-family: 'Dosis', sans-serif;
+}
+
+.timer {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  height: 120px;
+  width: 120px;
+  border-radius: 60px;
+  background-color: white;
+  margin: auto;
+}
+
+.timer-label {
+  color: black;
+  font-family: 'Dosis', sans-serif;
+  text-align: center;
+  font-size: 80px;
+}
+
+.answer {
+  display: flex;
+  align-items: center;
+  margin: 10px;
+  border-radius: 25px;
+  background-color: #4A148C;
+  width: 50%;
+  padding: 15px;
+  font-family: 'Dosis', sans-serif;
+}
+
+.criteria {
+  background-color: #8BC34A;
+  border-radius: 10px;
+  color: white;
+  font-family: 'Dosis', sans-serif;
+  margin: 10px;
+  width: 300px;
+}
