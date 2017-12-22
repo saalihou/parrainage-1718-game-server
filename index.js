@@ -74,7 +74,7 @@ io.on('connection', function(socket) {
       }
     });
     gameState.selectedFathers = await selectFathers();
-    gameState.selectedFathers.forEach((son, index) => {
+    gameState.selectedFathers.forEach((father, index) => {
       if (!fs.existsSync(`./clients/affichage/` + father.photo)) {
         father.photo = 'assets/images/jedi.jpg';
       }
