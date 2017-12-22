@@ -12,6 +12,12 @@ module.exports = async function selectSons(isFlip) {
   if (students.length === 0 && !isFlip) {
     const otherOptionStudents = await selectSons(true);
     return otherOptionStudents;
+  } else if (students.length === 1) {
+    const otherStudent = await await Student.findOne({
+      option: currentOption,
+      level: 1
+    }).exec();
+    students.push(otherStudent);
   }
   return students;
 };
