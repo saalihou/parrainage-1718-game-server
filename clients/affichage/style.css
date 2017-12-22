@@ -1,4 +1,5 @@
-html, body {
+html,
+body {
   height: 100%;
   width: 100%;
   margin: 0;
@@ -22,29 +23,44 @@ h2 {
   color: white;
 }
 .main-container {
+  position: relative;
   display: flex;
   height: 100%;
   align-items: space-around;
   flex-direction: row;
-  background-image: url("assets/images/photo-blured.jpg");
-  background-repeat: no-repeat; 
+  background-image: url('./assets/images/bg-image.jpg');
+  background-repeat: no-repeat;
   background-size: 100% 100%;
+}
+
+.player-container, .play-container, .parrains {
+  position: relative;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .player-container {
   padding: 10px;
   display: flex;
-  flex: 0.2;
+  width: 30%;
   flex-direction: column;
   text-align: center;
 }
 
 .play-container {
-  flex: 0.6;
+  width: 40%;
   display: flex;
   flex-direction: column;
   padding: 20px;
-  height: 100%
+  height: 100%;
 }
 
 .pic-container {
@@ -57,15 +73,14 @@ h2 {
 
 .pic {
   margin: auto;
-  width: 55%;
-  height: 100%;
+  width: 20rem;
+  height: 20rem;
   border-radius: 50%;
   align-self: center;
 }
 .criteria-player-container {
   height: 45%;
 }
-
 
 .question-container {
   border-radius: 20px;
@@ -104,13 +119,16 @@ li {
   display: flex;
   justify-content: center;
   align-items: center;
-  
 }
 
 button {
   position: relative;
-	top: 50%;
-	transform: translateY(-50%);
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.name1, .name2 {
+  font-size: 3rem;
 }
 
 .name1 {
@@ -118,7 +136,7 @@ button {
   justify-content: center;
   align-items: center;
   min-height: 50px;
-  background-color: #4FC3F7;
+  background-color: #4fc3f7;
   border-radius: 10px;
   box-shadow: 5px 5px 5px black;
   font-family: 'Dosis', sans-serif;
@@ -129,7 +147,7 @@ button {
   justify-content: center;
   align-items: center;
   min-height: 50px;
-  background-color: #F44336;
+  background-color: #f44336;
   border-radius: 10px;
   box-shadow: 5px 5px 5px black;
   font-family: 'Dosis', sans-serif;
@@ -158,17 +176,63 @@ button {
   align-items: center;
   margin: 10px;
   border-radius: 25px;
-  background-color: #4A148C;
+  background-color: #4a148c;
   width: 50%;
   padding: 15px;
   font-family: 'Dosis', sans-serif;
 }
 
 .criteria {
-  background-color: #8BC34A;
+  background-color: #8bc34a;
   border-radius: 10px;
   color: white;
   font-family: 'Dosis', sans-serif;
   margin: 10px;
   width: 300px;
+}
+
+.parrains {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.parrain {
+  width: 50%;
+}
+
+.parrain .pic {
+  width: 25rem;
+  height: 25rem;
+}
+
+.parrain {
+  text-align: center;
+}
+
+.parrain .name,
+.parrain .son {
+  text-align: center;
+  font-family: 'Dosis', sans-serif;
+  font-size: 4rem;
+  margin: 0;
+  font-weight: bold;
+}
+
+.parrain .son {
+  font-size: 3rem;
+}
+
+.parrain.filleul-0 {
+  color: #4fc3f7;
+}
+
+.parrain.filleul-1 {
+  color: #f44336;
 }

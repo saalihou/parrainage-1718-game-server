@@ -23,8 +23,7 @@ function reinitialize() {
 }
 
 function initGame(state) {
-  $('#parrain0').hide();
-  $('#parrain1').hide();
+  $('.parrains').fadeOut();
   displaySons(
     state.selectedSons,
     state.distributedCriteria,
@@ -79,10 +78,14 @@ function displayQuestion(state) {
   state.currentQuestion.answers.forEach(function(answer, index) {
     $('#answer' + index).text(answer.value);
     if (answer.good && state.state === 'ROUND_END') {
-      $('#answer' + index).parent().css('backgroundColor', 'orange');
+      $('#answer' + index)
+        .parent()
+        .css('backgroundColor', 'orange');
     } else {
-      $('#answer' + index).parent().css('backgroundColor', '#4A148C');
-		}
+      $('#answer' + index)
+        .parent()
+        .css('backgroundColor', '#4A148C');
+    }
   });
   if (state.state === 'QUESTION') {
     startTimer();
@@ -93,13 +96,17 @@ function displayResult(state) {
   console.log('Le résultat est : ' + JSON.stringify(state.result));
   state.result.forEach(function(parrainIndex, index) {
     const parrain = state.selectedFathers[parrainIndex];
+    const son = state.selectedSons[index];
     $('#parrain' + index + ' .pic').attr('src', parrain.photo);
     $('#parrain' + index + ' .name').text(
       parrain.firstName + ' ' + parrain.lastName
     );
+    $('#parrain' + index + ' .son').text(
+      'parrain de ' + son.firstName + ' ' + son.lastName
+    );
+    $('#parrain' + index).addClass('filleul-' + index);
   });
-  $('#parrain0').show();
-  $('#parrain1').show();
+  $('.parrains').fadeIn();
 }
 
 function startTimer() {
