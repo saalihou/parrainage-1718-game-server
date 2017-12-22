@@ -1,6 +1,7 @@
 var socket = require('socket.io');
 var express = require('express');
 const _ = require('lodash');
+const fs = require('fs');
 
 const reinit = require('./src/reinit');
 const selectFathers = require('./src/selectFathers');
@@ -67,7 +68,17 @@ io.on('connection', function(socket) {
     console.log('initGame');
     gameState = reinitialize();
     gameState.selectedSons = await selectSons();
+    gameState.selectedSons.forEach((son, index) => {
+      if (!fs.existsSync(`./clients/affichage/` + son.photo)) {
+        son.photo = 'assets/images/jedi.jpg';
+      }
+    });
     gameState.selectedFathers = await selectFathers();
+    gameState.selectedFathers.forEach((son, index) => {
+      if (!fs.existsSync(`./clients/affichage/` + father.photo)) {
+        father.photo = 'assets/images/jedi.jpg';
+      }
+    });
     gameState.remainingSons = await getRemainingSons();
     console.log(gameState.remainingSons);
     const father1Criteria = _.sampleSize(
@@ -84,7 +95,10 @@ io.on('connection', function(socket) {
   });
 
   socket.on('nextQuestion', async function() {
-    if (_.flatten(gameState.distributedCriteria).length === 6) {
+    if (
+      _.flatten(gameState.distributedCriteria).length ===
+      gameState.selectedCriteria.length
+    ) {
       return;
     }
     gameState.winner = null;
@@ -103,7 +117,10 @@ io.on('connection', function(socket) {
 
   function checkWinner() {
     const distributedCriteria = gameState.distributedCriteria;
-    if (_.flatten(distributedCriteria).length === 6) {
+    if (
+      _.flatten(distributedCriteria).length ===
+      gameState.selectedCriteria.length
+    ) {
       const winnerIndex =
         distributedCriteria[0].length > distributedCriteria[1].length ? 0 : 1;
       const wonCriteria = distributedCriteria[winnerIndex];
