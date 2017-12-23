@@ -9,7 +9,7 @@ function nextQuestion() {
   clearTimeout(window.timeoutId);
   window.timeoutId = setTimeout(() => {
     socket.emit('timeout');
-  }, 7000);
+  }, 10000);
 }
 
 socket.on('endRound', function() {

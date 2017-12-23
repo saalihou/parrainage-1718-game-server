@@ -67,7 +67,7 @@ function disableAnswers() {
 
 function startTimer() {
   clearInterval(window.timerInterval);
-  var countdown = 6;
+  var countdown = 9;
   $('.timer-label').text(countdown + 1);
   window.timerInterval = setInterval(function() {
     $('.timer-label').text(countdown);
