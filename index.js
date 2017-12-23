@@ -33,6 +33,7 @@ function reinitialize() {
     currentQuestion: null,
     currentCriterion: null,
     distributedCriteria: [[], []],
+    remainingSons: 0,
     state: 'INIT'
   };
 }
@@ -47,6 +48,7 @@ const getCorrectAnswer = () => {
 
 let clientCount = 0;
 let wrongAnswerCount = 0;
+let lock = false;
 
 io.on('connection', function(socket) {
   console.log(`New client connected with id ${socket.id}`);
@@ -70,6 +72,7 @@ io.on('connection', function(socket) {
 
   socket.on('initGame', async function() {
     console.log('initGame');
+    lock = false;
     gameState = reinitialize();
     gameState.selectedSons = await selectSons();
     gameState.selectedSons.forEach((son, index) => {
@@ -99,6 +102,7 @@ io.on('connection', function(socket) {
   });
 
   socket.on('nextQuestion', async function() {
+    lock = false;
     if (
       _.flatten(gameState.distributedCriteria).length ===
       gameState.selectedCriteria.length
@@ -159,9 +163,14 @@ io.on('connection', function(socket) {
   }
 
   socket.on('answer', function(index) {
+    console.log(lock);
+    if (lock) {
+      return;
+    }
     console.log('answer');
     const distributedCriteria = gameState.distributedCriteria;
     if (gameState.currentQuestion.answers[index].good) {
+      lock = true;
       console.log(clientIndex, gameState.distributedCriteria);
       gameState.distributedCriteria[clientIndex].push(
         gameState.currentCriterion
@@ -169,7 +178,7 @@ io.on('connection', function(socket) {
       checkWinner();
       gameState.state = 'ROUND_END';
       gameState.winner = clientIndex;
-      io.sockets.emit('goodAnswer');
+      io.sockets.emit('goodAnswer', clientIndex);
       io.sockets.emit('gameState', gameState);
       io.sockets.emit('endRound', clientIndex);
     } else {

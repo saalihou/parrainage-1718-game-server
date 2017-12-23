@@ -48,13 +48,14 @@ function displayQuestion(state) {
     $button.attr('disabled', false);
     $button.text(state.currentQuestion.answers[index].value);
     $button.off('click');
+
     $button.click(function() {
       socket.emit('answer', index);
       disableAnswers();
-      if (state.currentQuestion.answers[index].good) {
-        $button.addClass('good');
-      }
     });
+    if (state.currentQuestion.answers[index].good) {
+      window.$goodButton = $button;
+    }
   });
   startTimer();
 }
@@ -91,9 +92,12 @@ socket.on('reconnect', function() {
 socket.on('gameState', gameState => updateGame(gameState));
 socket.on('clientIndex', index => (window.clientIndex = index));
 socket.on('wrongAnswer', disableAnswers);
-socket.on('goodAnswer', function() {
+socket.on('goodAnswer', function(clientIndex) {
   disableAnswers();
   stopTimer();
+  if (clientIndex === window.clientIndex) {
+    $goodButton.addClass('good');
+  }
 });
 socket.on('timeout', function() {
   disableAnswers();
