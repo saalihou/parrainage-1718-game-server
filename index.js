@@ -11,6 +11,8 @@ const selectQuestion = require('./src/selectQuestion');
 const sponsor = require('./src/sponsor');
 const getRemainingSons = require('./src/getRemainingSons');
 
+let currentOption = 'inf';
+
 var app = express();
 app.use(cors());
 var server = app.listen(8081, '0.0.0.0', function() {
@@ -72,15 +74,20 @@ io.on('connection', function(socket) {
 
   socket.on('initGame', async function() {
     console.log('initGame');
+    currentOption = currentOption === 'inf' ? 'tr' : 'inf';
     lock = false;
     gameState = reinitialize();
-    gameState.selectedSons = await selectSons();
+    gameState.selectedSons = await selectSons(currentOption);
+    if (gameState.selectedSons.length === 0) {
+      currentOption = currentOption === 'inf' ? 'tr' : 'inf';
+      gameState.selectedSons = await selectSons(currentOption);
+    }
     gameState.selectedSons.forEach((son, index) => {
       if (!fs.existsSync(`./clients/affichage/` + son.photo)) {
         son.photo = 'assets/images/jedi.jpg';
       }
     });
-    gameState.selectedFathers = await selectFathers();
+    gameState.selectedFathers = await selectFathers(currentOption);
     gameState.selectedFathers.forEach((father, index) => {
       if (!fs.existsSync(`./clients/affichage/` + father.photo)) {
         father.photo = 'assets/images/jedi.jpg';
