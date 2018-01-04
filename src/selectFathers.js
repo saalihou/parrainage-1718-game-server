@@ -2,10 +2,14 @@ const _ = require('lodash');
 
 const Student = require('../models/Student');
 
+let currentOption = 'inf';
+
 module.exports = async function selectFathers() {
-  const allFathers = await Student.find({ level: 2 });
+  currentOption = currentOption === 'inf' ? 'tr' : 'inf';
+  const allFathers = await Student.find({ option: currentOption, level: 2 });
   const minSonCount = _.minBy(allFathers, f => f.sonCount).sonCount;
   const selectedFathers = await Student.find({
+    option: currentOption,
     level: 2,
     sonCount: minSonCount
   })
