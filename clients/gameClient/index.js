@@ -1,4 +1,4 @@
-var socket = io('http://192.168.43.121:8081');
+var socket = io('http://192.168.1.127:8081');
 
 function updateGame(gameState) {
   if (window.clientIndex === undefined) {
@@ -32,6 +32,7 @@ function displaySon(son) {
   console.log('Informations relatives aux filleus ' + JSON.stringify(son));
   $('.question-container, .answers-container').hide();
   $('.pic').attr('src', son.photo);
+  $('.name').text(son.firstName + ' ' + son.lastName);
 }
 
 function displayQuestion(state) {
