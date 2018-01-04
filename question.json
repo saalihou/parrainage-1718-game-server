@@ -24,9 +24,9 @@
     "bonne_reponse": 0
   },
   {
-    "question": "Le HTML est un langage dit",
-    "choix": ["Encode", "Crypte", "Balise"],
-    "bonne_reponse": 2
+    "question": "Combien de pavillons compte le campus ?",
+    "choix": ["3", "5", "25"],
+    "bonne_reponse": 0
   },
   {
     "question": "Qu'est-ce que le BIOS ?",
@@ -43,9 +43,9 @@
     "bonne_reponse": 1
   },
   {
-    "question": "Qui a invente le langage C",
-    "choix": ["Denis Ritchie", "Tim Bernes Lee", "Christophe Carper"],
-    "bonne_reponse": 0
+    "question": "Qui est le chef de département ?",
+    "choix": ["Gervais Mendy", "Alassane Bah", "Mandicou Bah"],
+    "bonne_reponse": 1
   },
   {
     "question": "Que signifie ESP?",
@@ -57,20 +57,20 @@
     "bonne_reponse": 1
   },
   {
-    "question": "Que signifie AJAX?",
+    "question": "Que signifie COUD?",
     "choix": [
-      "Asynchronous Java And XML ",
-      "Asynchronous Javascript And XML",
-      "Asynchronous JEE And XML"
+      "Centre des ovnis déments",
+      "Centre des oeuvres universitaires de Damas",
+      "Centre des oeuvres universitaires de Dakar"
     ],
-    "bonne_reponse": 1
+    "bonne_reponse": 2
   },
   {
-    "question": "Que signifie JSON?",
+    "question": "Que signifie IP?",
     "choix": [
-      "Java Object Notation",
-      "Javascript Object Notation",
-      "JEE Object Notation"
+      "Intranet Protocol",
+      "Internet Protocol",
+      "International Protocol"
     ],
     "bonne_reponse": 1
   },
@@ -105,13 +105,9 @@
     "bonne_reponse": 1
   },
   {
-    "question": "XML:",
-    "choix": [
-      "est un format de description de données",
-      "ne permet pas de séparer le contenu de la présentation",
-      "est un langage de programmation"
-    ],
-    "bonne_reponse": 0
+    "question": "Que signifie WIFI",
+    "choix": ["Wireless Filaire", "Windows Finder", "Wireless Fidelity"],
+    "bonne_reponse": 2
   },
   {
     "question": "Quel logiciel est utilise pour faire des presentations?",
@@ -138,11 +134,11 @@
     "bonne_reponse": 1
   },
   {
-    "question": "Que signifie FSF?",
+    "question": "Que signifie UCAD?",
     "choix": [
-      "Foundation of Senegal for Families",
-      "Free Software Foundation",
-      "Foundation of Software Free"
+      "Université Cheikh Anta Diakité de Dakar",
+      "Université Cheikh Anta Diop de Dakar",
+      "Université Cheikh Anta Diop de Damas"
     ],
     "bonne_reponse": 1
   },
@@ -161,13 +157,13 @@
     "bonne_reponse": 2
   },
   {
-    "question": "La commande « ping » sert à :  ",
+    "question": "La commande « ls » sert à :  ",
     "choix": [
       "rien",
       "verifier le temps de reponse d'une machine distante",
-      "Trouver l'emplacement d'une machine"
+      "lister les fichiers du dossier"
     ],
-    "bonne_reponse": 1
+    "bonne_reponse": 2
   },
   {
     "question": "Que signifie URL?",
@@ -179,11 +175,11 @@
     "bonne_reponse": 2
   },
   {
-    "question": "UML est:",
+    "question": "MySQL est:",
     "choix": [
-      "La meme chose que Merise",
+      "La même chose que SQL",
       "un type de port",
-      "un langage de modelisation"
+      "un système de gestion de base de données"
     ],
     "bonne_reponse": 2
   },
@@ -202,15 +198,14 @@
     "bonne_reponse": 2
   },
   {
-    "question":
-      "Je sers a trouver l'adresse MAC d'une station dont l'adresse IP est connue, je suis:",
-    "choix": ["ICMP", "DNS", "ARP"],
+    "question": "Je sers à manger, qui suis-je ?",
+    "choix": ["Bouilloire", "Chambre", "Cuillère"],
     "bonne_reponse": 2
   },
   {
-    "question": "Protocole de resolution d'adresses IP:",
-    "choix": ["IPv4", "DNS", "IPv6"],
-    "bonne_reponse": 1
+    "question": "Trouvez l'intrus",
+    "choix": ["Coca", "Fanta", "Minute Maid"],
+    "bonne_reponse": 2
   },
   {
     "question": "Internet est un reseau:",
@@ -270,7 +265,7 @@
   {
     "question":
       "Parmi les éléments suivants, quel est celui qui permet de stocker une valeur ?",
-    "choix": ["onstante", "variable", "expression"],
+    "choix": ["constante", "variable", "expression"],
     "bonne_reponse": 1
   },
   {
@@ -286,9 +281,9 @@
     "bonne_reponse": 1
   },
   {
-    "question": "Pour définir un formulaire, j'utilise la paire :",
-    "choix": ["<form></form", "<p></p>", "<formulaire></formulaire>"],
-    "bonne_reponse": 0
+    "question": "Trouvez l'intrus",
+    "choix": ["Souris", "Clavier", "Seynou"],
+    "bonne_reponse": 2
   },
   {
     "question": "Identifier l'intrus: ",
@@ -311,13 +306,13 @@
     "bonne_reponse": 2
   },
   {
-    "question": "Qui a cree le concept d'Open Source",
-    "choix": ["Richard Richmond", "Richard Depardieu", "Richard Stallman"],
+    "question": "Trouvez l'intrus",
+    "choix": ["Facebook", "Twitter", "Whatsapp"],
     "bonne_reponse": 2
   },
   {
     "question": "Wi-Fi signifie ",
-    "choix": ["Windows Fidelity", "Windows Fi", "Wireles-Fidelity"],
+    "choix": ["Windows Fidelity", "Windows Fi", "Wireless-Fidelity"],
     "bonne_reponse": 2
   },
   {
@@ -334,7 +329,7 @@
     "question":
       "L'adresse IPv4 0.0.0.0 est utilisée par une machine quand elle :",
     "choix": [
-      " ne dispose pas encore d'une adresse IP",
+      "ne dispose pas encore d'une adresse IP",
       "fonctionne correctement",
       "souhaite se déconnecter du réseau"
     ],
@@ -347,14 +342,14 @@
     "bonne_reponse": 1
   },
   {
-    "question": "Le protocole DHCP est il routable ?",
-    "choix": ["Parfois", "Oui", "Non"],
+    "question": "Trouvez l'intrus:",
+    "choix": ["Informatique", "Télécoms Réseaux", "Gestion"],
     "bonne_reponse": 2
   },
   {
-    "question": "Combien de couches du modéle OSI gére 1 Hub ?",
-    "choix": ["2", "4", "1"],
-    "bonne_reponse": 2
+    "question": "Quel prof parle comme une ferrari ?",
+    "choix": ["Mme Keita", "Mr Biaye", "Mr Ngom"],
+    "bonne_reponse": 0
   },
   {
     "question": "Quel est le port usuel du protocole FTP?",
@@ -362,15 +357,13 @@
     "bonne_reponse": 21
   },
   {
-    "question":
-      "Quel est la commande permettant de restaurer le master boot record sous MSDOS ?",
-    "choix": ["Fdisk /mbr", "fdisk /r /w", "Fdisk /all"],
+    "question": "Qui est le parrain rappeur du département ?",
+    "choix": ["Jean", "Kandé", "Jeylani"],
     "bonne_reponse": 0
   },
   {
-    "question":
-      "Quel est la commande permettant de vérifier la route utilisée entre l'hôte local et un hôte distant ?",
-    "choix": ["TRACERT", "ROUTE", "NSLOOKUP"],
+    "question": "Quel maam est le plus court du campus ?",
+    "choix": ["Chichi", "Papi", "Seynou"],
     "bonne_reponse": 0
   },
   {
@@ -384,9 +377,8 @@
     "bonne_reponse": 1
   },
   {
-    "question":
-      "HTTP :// WWW.GOOGLE.fr est un nom de domaine pleinement qualifié quel est son terme exact ?",
-    "choix": ["UDP", "FQDN", "RIP"],
+    "question": "Quel est le moteur de recherche le plus populaire ?",
+    "choix": ["bing", "google", "yahoo search"],
     "bonne_reponse": 1
   },
   {
@@ -405,16 +397,14 @@
     "bonne_reponse": 1
   },
   {
-    "question":
-      "Comment s'appelle un réseau composé de PC qui sont tous clients et serveurs ?",
-    "choix": ["Reseau LAN", "Peer to Peer", "Reseau WAN"],
-    "bonne_reponse": 1
+    "question": "Trouvez l'intrus:",
+    "choix": ["Abdoulaye Wade", "Abdou Diouf", "Blaise Diagne"],
+    "bonne_reponse": 2
   },
   {
-    "question":
-      "Quel est la commande permettant d'afficher un cache d'adresses IP résolues en Adresse MAC ?",
-    "choix": ["ARP", "ICMP", "PAP"],
-    "bonne_reponse": 0
+    "question": "Comment s'appelle le nouvel aéroport du Sénégal ?",
+    "choix": ["AIPD", "AIBD", "AIDB"],
+    "bonne_reponse": 1
   },
   {
     "question":
@@ -424,31 +414,28 @@
   },
   {
     "question":
-      "Quel est le périphérique qui gére la couche physique et la sous couche MAC ?",
-    "choix": ["La carte reseau", "Le modem", "Le switch"],
+      "Quel est le périphérique qui permet de faire bouger le curseur ?",
+    "choix": ["La souris", "Le clavier", "Le disque dur"],
     "bonne_reponse": 0
   },
   {
-    "question":
-      "Quel est le protocole permettant d'attribuer des adresses IP automatiquement et dynamiquement ?",
-    "choix": ["DNS", "DHCP", "ARP"],
+    "question": "Trouvez l'intrus:",
+    "choix": ["Orange", "Tigo", "Nombo"],
     "bonne_reponse": 1
   },
   {
-    "question":
-      "Quel est la commande permettant d'afficher ou modifier la table de routage ?",
-    "choix": ["TRACERT", "ROUTE", "IPCONFIG"],
+    "question": "Qui est le filleul guitariste ?",
+    "choix": ["Bamba", "Denis", "Baye"],
     "bonne_reponse": 1
   },
   {
-    "question": "quel est l'impédence des câbles coaxiaux ?",
-    "choix": ["50 ohms", "120 ohms", "2 ohms"],
+    "question": "Qui a chanté Thriller",
+    "choix": ["Michael Jackson", "Michael Jordan", "Michael Jack Son"],
     "bonne_reponse": 0
   },
   {
-    "question":
-      "Quel est le service permettant de résoudre les adresses IP en nom netbios ?",
-    "choix": ["Wins", "DNS", "DHCP"],
+    "question": "Qui suis-je ?",
+    "choix": ["Un logiciel", "Une application", "Un système d'exploitation"],
     "bonne_reponse": 0
   },
   {
@@ -463,9 +450,9 @@
     "bonne_reponse": 2
   },
   {
-    "question": "Combien de couches du modéle OSI gére 1 répeteur ?",
-    "choix": ["4", "1", "2"],
-    "bonne_reponse": 1
+    "question": "Comment coder 5 en binaire",
+    "choix": ["1001", "1101", "1011"],
+    "bonne_reponse": 0
   },
   {
     "question":
@@ -523,13 +510,9 @@
     "bonne_reponse": 1
   },
   {
-    "question": "Que signifie AFNOR?",
-    "choix": [
-      "Association Finlandaise de Normalisation",
-      "Association Francaise de Normalisation",
-      "Association des Femmes Normalisatrices"
-    ],
-    "bonne_reponse": 1
+    "question": "Le dernier mot de l'hymne de l'ESP",
+    "choix": ["Fidélité", "Fraternité", "Falsification"],
+    "bonne_reponse": 0
   },
   {
     "question": "La norme 802.3 definit: ",
@@ -566,8 +549,8 @@
     "bonne_reponse": 2
   },
   {
-    "question": "Que signifie TLD?",
-    "choix": ["Top Level Direction", "Top Level Domain", "Top Level Directive"],
+    "question": "Qui a chanté Reine ?",
+    "choix": ["Dadju", "MHD", "Booba"],
     "bonne_reponse": 1
   },
   {
@@ -597,7 +580,7 @@
   {
     "question": "Que signifie BASH?",
     "choix": ["Bring Alone SHELL", "Bourne Alone SHELL", "Bourne Again SHELL"],
-    "bonne_reponse": 1
+    "bonne_reponse": 2
   },
   {
     "question": "Que signifie Kshell?",
@@ -605,17 +588,13 @@
     "bonne_reponse": 1
   },
   {
-    "question": "Qui est considere comme 'The Keyboar Lord?'",
+    "question": "Qui est considere comme 'The Keyboard Lord?'",
     "choix": ["Jean Phillipe Fall", "Oumar Sy", "Abdoul Kande"],
     "bonne_reponse": 1
   },
   {
-    "question": "Que signifie FIFO?",
-    "choix": [
-      "First In First Out",
-      "First Individual First Out",
-      "First Element First Out"
-    ],
+    "question": "Dans quelle série évolue l'agent Martin Bass",
+    "choix": ["Pod et Marichou", "Mbéttel", "Idoles"],
     "bonne_reponse": 0
   },
   {
@@ -646,13 +625,13 @@
     "bonne_reponse": 1
   },
   {
-    "question": "Que signifie LIFO?",
-    "choix": ["Later In First Out", "Last In Finally Out", "Last In First Out"],
-    "bonne_reponse": 2
+    "question": "Quel mame tape plus vite que son ombre ?",
+    "choix": ["Saalihou", "Lucky Luke", "The Flash"],
+    "bonne_reponse": 0
   },
   {
-    "question": "Combien y a t-il de serveurs racines?",
-    "choix": ["1", "15", "20"],
+    "question": "Pourquoi êtes-vous là ?",
+    "choix": ["S'amuseeeeer", "On ne sait paaaas", "Parrainage"],
     "bonne_reponse": 2
   },
   {
@@ -661,9 +640,9 @@
     "bonne_reponse": 1
   },
   {
-    "question": "Quel legume represente le logo de TOR?",
-    "choix": ["Oignon", "Aubergine", "Chou"],
-    "bonne_reponse": 0
+    "question": "Trouvez l'intrus",
+    "choix": ["Synapse", "CEE", "COUD"],
+    "bonne_reponse": 2
   },
   {
     "question": "A quoi sert le logiciel Winrar?",
@@ -676,8 +655,8 @@
     "bonne_reponse": 0
   },
   {
-    "question": "Qui a concu le C#?",
-    "choix": ["Anders Hilton", "Anders Hejlsberg", "Ander Herrera"],
+    "question": "Qui a concu Pascal?",
+    "choix": ["Anders Hilton", "Niklaus Wirth", "Ander Herrera"],
     "bonne_reponse": 1
   },
   {
@@ -745,21 +724,17 @@
     "bonne_reponse": 2
   },
   {
-    "question": "Que signifie POO?",
+    "question": "Que signifie CEE",
     "choix": [
-      "Programme Oriente Objet",
-      "Programmation Orientee Objet",
-      "Programmation Objet Oriente"
+      "Comité exécutif des étudiants",
+      "Commission exécutive des étudiants",
+      "Commission électorale des étudiants"
     ],
-    "bonne_reponse": 1
+    "bonne_reponse": 0
   },
   {
-    "question": "Que signifie JSON",
-    "choix": [
-      "Javascript Son Of Network",
-      "Javascript Object Notation",
-      "Java Object Notation"
-    ],
-    "bonne_reponse": 1
+    "question": "Qui est l'actuel président du CEE ?",
+    "choix": ["Mame Sylla", "Mame Saly", "Mame Saliou"],
+    "bonne_reponse": 0
   }
 ]
