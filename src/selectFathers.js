@@ -17,6 +17,7 @@ module.exports = async function selectFathers() {
     .exec();
   if (selectedFathers.length < 2) {
     const otherFather = await Student.findOne({
+      option: currentOption,
       level: 2,
       sonCount: minSonCount + 1
     }).exec();
